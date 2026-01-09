@@ -69,5 +69,23 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND LOWER(i.product.name) LIKE LOWER(CONCAT('%', :pname, '%'))")
     public List<Product> findByNameLike(long storeId,String pname);
 
+    @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId")
+    List<Product> findProductsByStoreId(Long storeId);
 
+    @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND i.product.category = :category")
+    List<Product> findByCategoryAndStoreId(long storeId,String category);
+
+    @Query("SELECT i.product FROM Inventory i WHERE i.store.id = :storeId AND LOWER(i.product.name) LIKE LOWER(CONCAT('%', :pname, '%')) AND i.product.category = :category")
+    List<Product> findByNameAndCategory(long storeId, String pname,String category);
+
+    Product findByid(Long id);
+
+    @Query("SELECT i FROM Product i WHERE LOWER(i.name) LIKE LOWER(CONCAT('%', :pname, '%'))")
+    List<Product> findProductBySubName(String pname);
+
+    @Query("SELECT i FROM Product i WHERE LOWER(i.name) LIKE LOWER(CONCAT('%', :pname, '%')) AND i.category = :category")
+    List<Product> findProductBySubNameAndCategory(String pname, String category);
+
+    @Query("SELECT i.product FROM Inventory i WHERE i.product.category = :category and i.store.id = :storeId")
+    List<Product> findProductByCategory(String category, long storeId);
 }

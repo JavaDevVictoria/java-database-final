@@ -24,9 +24,7 @@ public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   
 // 2. Add 'customer' field:
 //    - Type: private Customer
 //    - This field refers to the customer who placed the order.

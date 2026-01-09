@@ -17,6 +17,10 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long>  {
 
 // 2. Since no custom methods are required for this repository, the default CRUD operations (save, delete, update, findById, etc.) are available out of the box.
 
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM OrderItem o WHERE o.product.id = :productId")
+    void deleteByProductId(Long productId);
 }
 
 

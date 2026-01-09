@@ -53,7 +53,6 @@ public class Product {
 //    Example: @Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = "sku"))
 
     @NotNull(message = "sku cannot be null")
-    @Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = "sku"))
     private String sku;
 
 // 6. Add relationships:
